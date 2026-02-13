@@ -41,4 +41,18 @@ io.on('connection', (socket) => {
     });
 });
 
+
 server.listen(5000, () => console.log('Server is running on port 5000'));
+io.on('connection', (socket) => {
+    // ... existing code (me, disconnect, callUser, answerCall) ...
+
+    // --- ADD THIS NEW BLOCK HERE ---
+    socket.on("sendFeedback", (feedback) => {
+        console.log("--------------------------------");
+        console.log("📝 NEW FEEDBACK RECEIVED:");
+        console.log(`From User: ${socket.id.substring(0, 4)}`);
+        console.log(`Message: ${feedback}`);
+        console.log("--------------------------------");
+    });
+    // -------------------------------
+});
