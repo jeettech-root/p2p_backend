@@ -11,7 +11,9 @@ const io = require('socket.io')(server, {
     cors: {
         origin: "*",
         methods: ["GET", "POST"]
-    }
+    },
+    pingTimeout: 60000, // Increase timeout to 60s
+    pingInterval: 25000 // Send ping every 25s
 });
 
 // Maps peer IDs to socket IDs and back for reliable routing.
