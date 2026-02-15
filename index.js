@@ -10,7 +10,9 @@ app.use(cors());
 const io = require('socket.io')(server, {
     cors: {
         origin: "*",
-        methods: ["GET", "POST"]
+        methods: ["GET", "POST"],
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
     },
     pingTimeout: 60000, // Increase timeout to 60s
     pingInterval: 25000 // Send ping every 25s
